@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
-import 'package:plants_demo/src/camera_handler.dart';
+import 'package:plants_demo/src/screens/camera_handler.dart';
+import 'package:plants_demo/src/screens/home_page.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key, required this.firstCamera}) : super(key: key);
@@ -20,7 +21,7 @@ class WelcomeScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Image(
-                image: AssetImage('assets/project_pics/pest1.jpg'),
+                image: AssetImage('assets/project_pics/control6.jpeg'),
                 height: height * 0.6,
               ),
               Column(
@@ -42,7 +43,7 @@ class WelcomeScreen extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                TakePictureScreen(camera: firstCamera),
+                                HomePage(firstCamera: firstCamera),
                           ));
                     },
                     child: Text('Get Started round 3'),
