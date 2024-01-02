@@ -1,21 +1,26 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:plants_demo/src/screens/camera_handler.dart';
+import 'package:plants_demo/src/screens/disease_image_handler.dart';
+import 'package:plants_demo/src/screens/pest_image_handler.dart';
 
 class HomePage extends StatelessWidget {
   //const HomePage({super.key});
-  const HomePage({Key? key, required this.firstCamera}) : super(key: key);
-  final CameraDescription firstCamera;
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Home'),
+        centerTitle: true,
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Image(
-            image: AssetImage('assets/project_pics/control1.jpeg'),
+            image: const AssetImage('assets/project_pics/control1.jpeg'),
             height: height * 0.6,
           ),
           Row(
@@ -26,21 +31,19 @@ class HomePage extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                              TakePictureScreen(camera: firstCamera),
+                          builder: (context) => PlantPests(),
                         ));
                   },
-                  child: Icon(Icons.bug_report_outlined)),
+                  child: const Icon(Icons.bug_report_outlined)),
               ElevatedButton(
                   onPressed: () {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                              TakePictureScreen(camera: firstCamera),
+                          builder: (context) => PlantDiseases(),
                         ));
                   },
-                  child: Icon(Icons.energy_savings_leaf))
+                  child: const Icon(Icons.energy_savings_leaf))
             ],
           )
         ],

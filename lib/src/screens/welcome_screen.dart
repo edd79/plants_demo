@@ -4,8 +4,8 @@ import 'package:plants_demo/src/screens/camera_handler.dart';
 import 'package:plants_demo/src/screens/home_page.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({Key? key, required this.firstCamera}) : super(key: key);
-  final CameraDescription firstCamera;
+  const WelcomeScreen({Key? key}) : super(key: key);
+  
 
   @override
   Widget build(BuildContext context) {
@@ -43,10 +43,10 @@ class WelcomeScreen extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (context) =>
-                                HomePage(firstCamera: firstCamera),
+                                HomePage(),
                           ));
                     },
-                    child: Text('Get Started round 3'),
+                    child: Text('Get Started'),
                   ),
                 ],
               ),
