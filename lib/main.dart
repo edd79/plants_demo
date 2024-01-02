@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:plants_demo/src/screens/imagepicker.dart';
 
 import 'src/screens/welcome_screen.dart';
 
@@ -18,13 +19,16 @@ Future<void> main() async {
   final firstCamera = cameras.first;
 
   runApp(
+    // MaterialApp(
+    //   theme: ThemeData.dark(),
+    //   home: WelcomeScreen(
+    //     // Pass the appropriate camera to the TakePictureScreen widget.
+    //     firstCamera: firstCamera,
+    //   ),
+    // ),
     MaterialApp(
-      theme: ThemeData.dark(),
-      home: WelcomeScreen(
-        // Pass the appropriate camera to the TakePictureScreen widget.
-        firstCamera: firstCamera,
-      ),
-    ),
+      home: PickImageExample(),
+    )
   );
 }
 
