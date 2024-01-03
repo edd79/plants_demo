@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'package:permission_handler/permission_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -47,6 +47,21 @@ class _PickImageExampleState extends State<PickImageExample> {
     }
   }
 
+  Future<void> _checkPermissionStatus() async {
+    PermissionStatus status = await Permission.camera.status;
+    if (status.isGranted) {
+      _pickImagefromCamera();
+    } else {
+      status = await Permission.camera.request();
+
+      if (status.isGranted) {
+        _pickImagefromCamera();
+      } else {
+        print("Permission Denied");
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +84,7 @@ class _PickImageExampleState extends State<PickImageExample> {
                 child: const Text("Pick Image from Camera",
                     style: TextStyle(color: Colors.white)),
                 onPressed: () async {
-                  await _pickImagefromCamera();
+                  await _checkPermissionStatus();
                 }),
             isImageSelected
                 ? Expanded(

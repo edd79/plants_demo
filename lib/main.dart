@@ -11,12 +11,15 @@ Future<void> main() async {
   // Ensure that plugin services are initialized so that `availableCameras()`
   // can be called before `runApp()`
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   runApp(
     MaterialApp(
       theme: ThemeData.dark(),
-      home: WelcomeScreen(),
+      home: const WelcomeScreen(),
     ),
+    // MaterialApp(
+    //   home: PickImageExample(),
+    // ),
   );
 }
 
