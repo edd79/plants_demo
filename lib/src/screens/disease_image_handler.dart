@@ -17,8 +17,10 @@ class _PlantDiseasesState extends State<PlantDiseases> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(134, 72, 95, 67),
       appBar: AppBar(
-        title: Text('Plant Diseases'),
+        backgroundColor: const Color.fromARGB(88, 22, 185, 7),
+        title: const Text('Plant Diseases'),
         centerTitle: true,
       ),
       body: Column(
@@ -43,12 +45,20 @@ class _PlantDiseasesState extends State<PlantDiseases> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ElevatedButton.icon(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                        const Color.fromARGB(255, 37, 146, 82)),
+                  ),
                   onPressed: () async {
                     await _pickImagefromGallery();
                   },
                   label: const Text('Select from Gallery'),
                   icon: const Icon(Icons.folder_copy_outlined)),
               ElevatedButton.icon(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(
+                        const Color.fromARGB(255, 37, 146, 82)),
+                  ),
                   onPressed: () async {
                     await _pickImagefromCamera();
                   },
