@@ -108,12 +108,16 @@ class Slideshow extends StatefulWidget {
 class _SlideshowState extends State<Slideshow> {
   final List<String> slides = [
     'assets/project_pics/home.jpg',
-    'assets/project_pics/leaf2.jpeg',
-    'assets/project_pics/control5.jpeg',
-    'assets/project_pics/control4.jpeg',
-    'assets/project_pics/control2.jpeg',
-    'assets/project_pics/control1.jpeg',
-    'assets/project_pics/leaf5.jpeg'
+    'assets/project_pics/control17.jpg',
+    'assets/project_pics/control13.jpg',
+    'assets/project_pics/control12.jpg',
+    'assets/project_pics/control8.jpg',
+    'assets/project_pics/control11.jpg',
+    'assets/project_pics/control19.jpg',
+    'assets/project_pics/control18.jpg',
+    'assets/project_pics/control20.jpg',
+    'assets/project_pics/control10.jpg',
+    'assets/project_pics/control9.jpg',
   ];
 
   late PageController _pageController;
