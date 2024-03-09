@@ -71,7 +71,7 @@ flutter:
     - assets/model_unquant_diseases.tflite
     - assets/model_unquant_pests.tflite
     - assets/labels_diseases.txt
-    - assets/labels_diseases.txt
+    - assets/labels_pests.txt
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

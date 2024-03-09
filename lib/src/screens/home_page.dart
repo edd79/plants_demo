@@ -76,38 +76,45 @@ class HomePage extends StatelessWidget {
               child: const Slideshow(),
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ElevatedButton.icon(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const PlantDiseases(),
-                        ));
-                  },
-                  //add_a_photo
-                  //add_photo_alternate
-                  //backgroundColor: const Color.fromARGB(255, 37, 146, 82),
-                  label: const Text("Scan Leaf"),
-                  icon: const Icon(Icons.energy_savings_leaf_outlined)),
-
-                  ElevatedButton.icon(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const PlantPests(),
-                        ));
-                  },
-                  //add_a_photo
-                  //add_photo_alternate
-                  //backgroundColor: const Color.fromARGB(255, 37, 146, 82),
-                  label: const Text("Scan Pest"),
-                  icon: const Icon(Icons.bug_report_outlined)),
-            ],
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 35,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const PlantDiseases(),
+                          ));
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          Color.fromARGB(57, 56, 245, 39)),
+                    ),
+                    label: const Text("Scan Leaf"),
+                    icon: const Icon(Icons.energy_savings_leaf_outlined)),
+                ElevatedButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const PlantPests(),
+                          ));
+                    },
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                          Color.fromARGB(57, 56, 245, 39)),
+                    ),
+                    label: const Text("Scan Pest"),
+                    icon: const Icon(Icons.bug_report_outlined)),
+              ],
+            ), 
           )
+          
         ],
       ),
     );
