@@ -3,6 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:plants_demo/src/screens/disease_image_handler.dart';
+import 'package:plants_demo/src/screens/pest_image_handler.dart';
 
 class HomePage extends StatelessWidget {
   //const HomePage({super.key});
@@ -75,22 +76,37 @@ class HomePage extends StatelessWidget {
               child: const Slideshow(),
             ),
           ),
-          Positioned(
-            bottom: 50.0,
-            left: 125.0,
-            child: FloatingActionButton.extended(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const PlantDiseases(),
-                      ));
-                },
-                //add_a_photo
-                //add_photo_alternate
-                backgroundColor: const Color.fromARGB(255, 37, 146, 82),
-                label: const Text("Scan Leaf"),
-                icon: const Icon(Icons.energy_savings_leaf_outlined)),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ElevatedButton.icon(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const PlantDiseases(),
+                        ));
+                  },
+                  //add_a_photo
+                  //add_photo_alternate
+                  //backgroundColor: const Color.fromARGB(255, 37, 146, 82),
+                  label: const Text("Scan Leaf"),
+                  icon: const Icon(Icons.energy_savings_leaf_outlined)),
+
+                  ElevatedButton.icon(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const PlantPests(),
+                        ));
+                  },
+                  //add_a_photo
+                  //add_photo_alternate
+                  //backgroundColor: const Color.fromARGB(255, 37, 146, 82),
+                  label: const Text("Scan Pest"),
+                  icon: const Icon(Icons.bug_report_outlined)),
+            ],
           )
         ],
       ),
