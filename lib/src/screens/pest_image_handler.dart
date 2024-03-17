@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plants_demo/src/screens/more_info_screen.dart';
 import 'dart:io';
 import 'package:tflite/tflite.dart';
 import 'package:image_picker/image_picker.dart';
@@ -41,7 +42,7 @@ class _PlantPestsState extends State<PlantPests> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(134, 72, 95, 67),
+      backgroundColor: const Color.fromARGB(134, 72, 95, 67),
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(88, 22, 185, 7),
         title: const Text('Plant Pests'),
@@ -64,11 +65,11 @@ class _PlantPestsState extends State<PlantPests> {
                   )
                 : Container(),
             Container(
-              margin: EdgeInsets.all(20),
+              margin: const EdgeInsets.all(20),
               child: _results.isEmpty
-                  ? Text('No results yet')
+                  ? const Text('No results yet')
                   : Text(
-                      'Label: ${_results[0]["label"]}\nConfidence: ${(_results[0]["confidence"] * 100).toStringAsFixed(2)}',
+                      'Name: ${_results[0]["label"]}\nConfidence: ${(_results[0]["confidence"] * 100).toStringAsFixed(2)}',
                     ),
             ),
             Row(
@@ -165,5 +166,75 @@ class _PlantPestsState extends State<PlantPests> {
       isModelRunning =
           false; // Set isModelRunning to false after running the model
     });
+
+      // Show a dialog with a "Learn More" link
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Problem Identified'),
+          content: Text(
+              'Name: ${_results[0]["label"]}\nConfidence: ${(_results[0]["confidence"] * 100).toStringAsFixed(2)}'),
+          actions: [
+            TextButton(
+              child: const Text('Learn More'),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        MoreInfoPage(pdName: _results[0]["label"]),
+                  ),
+                );
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }
+
+
+// runModelOnImage() async {
+//   setState(() {
+//     isModelRunning = true;
+//   });
+//   var res = await Tflite.runModelOnImage(
+//     path: imageFile!.path,
+//     numResults: 18,
+//     threshold: 0.5,
+//     imageMean: 0.0,
+//     imageStd: 255.0,
+//     asynch: true,
+//   );
+//   print('Model Output: $res');
+//   setState(() {
+//     _results = res!;
+//     isModelRunning = false;
+//   });
+
+//   // Show a dialog with a "Learn More" link
+//   showDialog(
+//     context: context,
+//     builder: (BuildContext context) {
+//       return AlertDialog(
+//         title: Text('Pest Identified'),
+//         content: Text(
+//             'Label: ${_results[0]["label"]}\nConfidence: ${(_results[0]["confidence"] * 100).toStringAsFixed(2)}'),
+//         actions: [
+//           TextButton(
+//             child: Text('Learn More'),
+//             onPressed: () {
+//               Navigator.of(context).push(
+//                 MaterialPageRoute(
+//                   builder: (context) =>
+//                       PestInfoPage(pestName: _results[0]["label"]),
+//                 ),
+//               );
+//             },
+//           ),
+//         ],
+//       );
+//     },
+//   );
+// }

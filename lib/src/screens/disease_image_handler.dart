@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plants_demo/src/screens/more_info_screen.dart';
 import 'dart:io';
 import 'package:tflite/tflite.dart';
 import 'package:image_picker/image_picker.dart';
@@ -68,7 +69,7 @@ class _PlantDiseasesState extends State<PlantDiseases> {
               child: _results.isEmpty
                   ? Text('No results yet')
                   : Text(
-                      'Label: ${_results[0]["label"]}\nConfidence: ${(_results[0]["confidence"] * 100).toStringAsFixed(2)}',
+                      'Name: ${_results[0]["label"]}\nConfidence: ${(_results[0]["confidence"] * 100).toStringAsFixed(2)}',
                     ),
             ),
             Row(
@@ -164,5 +165,29 @@ class _PlantDiseasesState extends State<PlantDiseases> {
       _results = res!;
       isModelRunning = false; // Set isModelRunning to false after running the model
     });
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Problem Identified'),
+          content: Text(
+              'Name: ${_results[0]["label"]}\nConfidence: ${(_results[0]["confidence"] * 100).toStringAsFixed(2)}'),
+          actions: [
+            TextButton(
+              child: const Text('Learn More'),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        MoreInfoPage(pdName: _results[0]["label"]),
+                  ),
+                );
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 }
