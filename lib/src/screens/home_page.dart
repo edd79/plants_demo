@@ -12,45 +12,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
-    // return Scaffold(
-    //   appBar: AppBar(
-    //     title: const Text('Home'),
-    //     centerTitle: true,
-    //   ),
-    //   body: Column(
-    //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    //     children: [
-    //       Image(
-    //         image: const AssetImage('assets/project_pics/control1.jpeg'),
-    //         height: height * 0.6,
-    //       ),
-    //       Row(
-    //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    //         children: [
-    //           // ElevatedButton(
-    //           //     onPressed: () {
-    //           //       Navigator.push(
-    //           //           context,
-    //           //           MaterialPageRoute(
-    //           //             builder: (context) => PlantPests(),
-    //           //           ));
-    //           //     },
-    //           //     child: const Icon(Icons.bug_report_outlined)),
-    //           ElevatedButton.icon(
-    //               onPressed: () {
-    //                 Navigator.push(
-    //                     context,
-    //                     MaterialPageRoute(
-    //                       builder: (context) => const PlantDiseases(),
-    //                     ));
-    //               },
-    //               label: const Text("Plant Diseases"),
-    //               icon: const Icon(Icons.energy_savings_leaf))
-    //         ],
-    //       )
-    //     ],
-    //   ),
-    // );
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(88, 22, 185, 7),

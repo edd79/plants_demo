@@ -170,9 +170,13 @@ class _PlantDiseasesState extends State<PlantDiseases> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Problem Identified'),
+          elevation: 15.0,
+          icon: const Icon(Icons.error_outline_outlined,
+          color: Colors.red,),
+          backgroundColor: Color.fromARGB(184, 106, 230, 157),
+          title: const Text('Leaf Identified'),
           content: Text(
-              'Name: ${_results[0]["label"]}\nConfidence: ${(_results[0]["confidence"] * 100).toStringAsFixed(2)}'),
+              'Name: ${_results[0]["label"]}\nConfidence: ${(_results[0]["confidence"] * 100).toStringAsFixed(2)}\n\nTap the link below for information on control and prevention measures\n\nTap anywhere else to close this dialog'),
           actions: [
             TextButton(
               child: const Text('Learn More'),

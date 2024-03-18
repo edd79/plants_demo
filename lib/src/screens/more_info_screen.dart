@@ -15,90 +15,6 @@ class MoreInfoPage extends StatefulWidget {
   @override
   _MoreInfoPageState createState() => _MoreInfoPageState();
 }
-
-// class _MoreInfoPageState extends State<MoreInfoPage> {
-//   late Database db;
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     _initDatabase();
-//   }
-
-//   Future<void> _initDatabase() async {
-//     var databasesPath = await getDatabasesPath();
-//     var path = join(databasesPath, "pestAndDisease.db");
-
-//     // Check if the database exists
-//     var exists = await databaseExists(path);
-
-//     if (!exists) {
-//       // Should happen only the first time you launch your application
-//       print("Creating new copy from asset");
-
-//       // Make sure the parent directory exists
-//       try {
-//         await Directory(dirname(path)).create(recursive: true);
-//       } catch (_) {}
-
-//       // Copy from asset
-//       ByteData data = await rootBundle.load(join("assets", "pestAndDisease.db"));
-//       List<int> bytes =
-//           data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
-
-//       // Write and flush the bytes written
-//       await File(path).writeAsBytes(bytes, flush: true);
-//     } else {
-//       print("Opening existing database");
-//     }
-//     // open the database
-//     db = await openDatabase(path);
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text(widget.pdName),
-//       ),
-//       body: ListView(
-//         children: [
-//           _buildInfoCard('About'),
-//           _buildInfoCard('Control Measures'),
-//           _buildInfoCard('Prevention'),
-//         ],
-//       ),
-//     );
-//   }
-
-//   Widget _buildInfoCard(String title) {
-//     return Card(
-//       child: FutureBuilder(
-//         future: _fetchInfo(title),
-//         builder: (BuildContext context, AsyncSnapshot snapshot) {
-//           if (snapshot.connectionState == ConnectionState.waiting) {
-//             return CircularProgressIndicator();
-//           } else if (snapshot.hasError) {
-//             return Text('Error: ${snapshot.error}');
-//           } else {
-//             return ListTile(
-//               title: Text(title),
-//               subtitle: Text(snapshot.data),
-//             );
-//           }
-//         },
-//       ),
-//     );
-//   }
-
-//   Future<String> _fetchInfo(String title) async {
-//     final List<Map<String, dynamic>> maps = await db
-//         .query('pest_and_disease_data', where: 'name = ?', whereArgs: [widget.pdName]);
-//     return maps[0][title.toLowerCase()];
-//   }
-// }
-
-
 class _MoreInfoPageState extends State<MoreInfoPage> {
   late Future<Database> db;
 
@@ -143,10 +59,14 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
             return Text('Error: ${snapshot.error}');
           } else {
             return Scaffold(
+              backgroundColor: Color.fromARGB(133, 17, 31, 14),
               appBar: AppBar(
+                backgroundColor: const Color.fromARGB(88, 22, 185, 7),
                 title: Text(widget.pdName),
+                centerTitle: true,
               ),
               body: ListView(
+                padding: EdgeInsets.all(10.0),
                 children: [
                   _buildInfoCard('About', snapshot.data!),
                   _buildInfoCard('Control Measures', snapshot.data!),
@@ -156,8 +76,14 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
             );
           }
         } else {
-          return CircularProgressIndicator(
-            color: Colors.green,
+          return const Center(
+            child: SizedBox(
+              height: 50,
+              width: 50,
+              child: CircularProgressIndicator(
+                color: Colors.green,
+              ),
+            ),
           );
         }
       },
@@ -170,13 +96,24 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
         future: _fetchInfo(title, db),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
+            return const Center(
+              child: SizedBox(
+                height: 50,
+                width: 50,
+                child: CircularProgressIndicator(
+                  color: Colors.green,
+                ),
+              ),
+            );
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else {
-            return ListTile(
-              title: Text(title),
-              subtitle: Text(snapshot.data),
+            return Container(
+              color: Color.fromARGB(136, 106, 230, 158),
+              child: ListTile(
+                title: Text(title),
+                subtitle: Text(snapshot.data),
+              ),
             );
           }
         },
