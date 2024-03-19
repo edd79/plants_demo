@@ -29,7 +29,7 @@ class _PlantPestsState extends State<PlantPests> {
   }
 
   Future<void> _loadDefaultImage() async {
-    final byteData = await rootBundle.load('assets/upload1.jpg');
+    final byteData = await rootBundle.load('assets/project_pics/upload1.jpg');
     setState(() {
       defaultImageData = byteData.buffer.asUint8List();
     });
@@ -65,16 +65,28 @@ class _PlantPestsState extends State<PlantPests> {
           children: [
             const Padding(padding: EdgeInsets.only(bottom: 20)),
             isImageSelected
-                ? Container(
-                    height: 300, // specify the height of the container
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Image(
-                        image: FileImage(imageFile!),
+                ? Center(
+                  child: Container(
+                      height: 300, // specify the height of the container
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: imageFile != null
+                            ? Image.file(imageFile!)
+                            : Container(child: Text('No image')),
                       ),
                     ),
-                  )
-                : Container(),
+                )
+                : Center(
+                  child: Container(
+                      height: 300,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: defaultImageData != null
+                            ? Image.memory(defaultImageData!)
+                            : Container(child:Text('No image')),
+                      ),
+                    ),
+                ),
             Container(
               margin: const EdgeInsets.all(20),
               child: _results.isEmpty
@@ -117,70 +129,6 @@ class _PlantPestsState extends State<PlantPests> {
           ],
         ),
       ),
-      // body: Stack(
-      //   children: [
-      //     Positioned(
-      //       top: MediaQuery.of(context).size.height * 0.25, 
-      //       child: isImageSelected
-      //           ? Container(
-      //               height: 300,
-      //               child: Padding(
-      //                 padding: const EdgeInsets.all(8.0),
-      //                 child: Image(
-      //                   image: FileImage(imageFile!),
-      //                 ),
-      //               ),
-      //             )
-      //           : Container(
-      //               height: 300,
-      //               child: Padding(
-      //                 padding: const EdgeInsets.all(8.0),
-      //                 child: Image.memory(defaultImageData!),
-      //               ),
-      //             ),
-      //     ),
-      //     Container(
-      //         margin: const EdgeInsets.all(20),
-      //         child: _results.isEmpty
-      //             ? const Text('No results yet')
-      //             : Text(
-      //                 'Name: ${_results[0]["label"]}\nConfidence: ${(_results[0]["confidence"] * 100).toStringAsFixed(2)}',
-      //               ),
-      //       ),
-
-      //       Row(
-      //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      //         children: [
-      //           ElevatedButton.icon(
-      //               style: ButtonStyle(
-      //                 backgroundColor: MaterialStateProperty.all<Color>(
-      //                     const Color.fromARGB(255, 37, 146, 82)),
-      //               ),
-      //               onPressed: isModelRunning
-      //                   ? null
-      //                   : () async {
-      //                       // Disable the button if the model is running
-      //                       await _pickImagefromGallery();
-      //                     },
-      //               label: const Text('Select from Gallery'),
-      //               icon: const Icon(Icons.folder_copy_outlined)),
-      //           ElevatedButton.icon(
-      //               style: ButtonStyle(
-      //                 backgroundColor: MaterialStateProperty.all<Color>(
-      //                     const Color.fromARGB(255, 37, 146, 82)),
-      //               ),
-      //               onPressed: isModelRunning
-      //                   ? null
-      //                   : () async {
-      //                       // Disable the button if the model is running
-      //                       await _pickImagefromCamera();
-      //                     },
-      //               label: const Text('Take Picture'),
-      //               icon: const Icon(Icons.camera_enhance_outlined))
-      //         ],
-      //       )
-      //   ],
-      // ),
     );
   }
 

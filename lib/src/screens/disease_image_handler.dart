@@ -3,6 +3,9 @@ import 'package:plants_demo/src/screens/more_info_screen.dart';
 import 'dart:io';
 import 'package:tflite/tflite.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'dart:typed_data';
+
 
 class PlantDiseases extends StatefulWidget {
   const PlantDiseases({super.key});
@@ -15,6 +18,7 @@ class _PlantDiseasesState extends State<PlantDiseases> {
   bool isImageSelected = false;
   bool isModelRunning = false;
   File? imageFile;
+  Uint8List? defaultImageData;
 
   List _results = [];
 
@@ -25,11 +29,19 @@ class _PlantDiseasesState extends State<PlantDiseases> {
     );
   }
 
+  Future<void> _loadDefaultImage() async {
+    final byteData = await rootBundle.load('assets/project_pics/upload1.jpg');
+    setState(() {
+      defaultImageData = byteData.buffer.asUint8List();
+    });
+  }
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _loadModel();
+    _loadDefaultImage();
   }
 
   @override
@@ -54,16 +66,28 @@ class _PlantDiseasesState extends State<PlantDiseases> {
           children: [
             const Padding(padding: EdgeInsets.only(bottom: 20)),
             isImageSelected
-                ? Container(
-                    height: 300, // specify the height of the container
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Image(
-                        image: FileImage(imageFile!),
+                ? Center(
+                    child: Container(
+                      height: 300, // specify the height of the container
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: imageFile != null
+                            ? Image.file(imageFile!)
+                            : Container(child: Text('No image')),
                       ),
                     ),
                   )
-                : Container(),
+                : Center(
+                    child: Container(
+                      height: 300,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: defaultImageData != null
+                            ? Image.memory(defaultImageData!)
+                            : Container(child: Text('No image')),
+                      ),
+                    ),
+                  ),
             Container(
               margin: EdgeInsets.all(20),
               child: _results.isEmpty
