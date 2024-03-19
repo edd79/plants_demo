@@ -1,11 +1,8 @@
 import 'dart:io';
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
 
 class MoreInfoPage extends StatefulWidget {
   final String pdName;
@@ -66,7 +63,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
                 centerTitle: true,
               ),
               body: ListView(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 children: [
                   _buildInfoCard('About', snapshot.data!),
                   _buildInfoCard('Control Measures', snapshot.data!),
@@ -109,7 +106,7 @@ class _MoreInfoPageState extends State<MoreInfoPage> {
             return Text('Error: ${snapshot.error}');
           } else {
             return Container(
-              color: Color.fromARGB(136, 106, 230, 158),
+              color: const Color.fromARGB(136, 106, 230, 158),
               child: ListTile(
                 title: Text(title),
                 subtitle: Text(snapshot.data),

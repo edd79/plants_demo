@@ -1,10 +1,5 @@
 import 'dart:async';
-import 'dart:io';
-
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:plants_demo/src/screens/imagepicker.dart';
-
 import 'src/screens/welcome_screen.dart';
 
 Future<void> main() async {
@@ -17,9 +12,6 @@ Future<void> main() async {
       theme: ThemeData.dark(),
       home: const WelcomeScreen(),
     ),
-    // MaterialApp(
-    //   home: PickImageExample(),
-    // ),
   );
 }
 

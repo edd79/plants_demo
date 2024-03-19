@@ -54,7 +54,7 @@ class _PlantDiseasesState extends State<PlantDiseases> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(134, 72, 95, 67),
+      backgroundColor: const Color.fromARGB(134, 72, 95, 67),
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(88, 22, 185, 7),
         title: const Text('Plant Diseases'),
@@ -67,31 +67,31 @@ class _PlantDiseasesState extends State<PlantDiseases> {
             const Padding(padding: EdgeInsets.only(bottom: 20)),
             isImageSelected
                 ? Center(
-                    child: Container(
+                    child: SizedBox(
                       height: 300, // specify the height of the container
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: imageFile != null
                             ? Image.file(imageFile!)
-                            : Container(child: Text('No image')),
+                            : const Text('No image'),
                       ),
                     ),
                   )
                 : Center(
-                    child: Container(
+                    child: SizedBox(
                       height: 300,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: defaultImageData != null
                             ? Image.memory(defaultImageData!)
-                            : Container(child: Text('No image')),
+                            : const Text('No image'),
                       ),
                     ),
                   ),
             Container(
-              margin: EdgeInsets.all(20),
+              margin: const EdgeInsets.all(20),
               child: _results.isEmpty
-                  ? Text('No results yet')
+                  ? const Text('No results yet')
                   : Text(
                       'Name: ${_results[0]["label"]}\nConfidence: ${(_results[0]["confidence"] * 100).toStringAsFixed(2)}',
                     ),
@@ -197,7 +197,7 @@ class _PlantDiseasesState extends State<PlantDiseases> {
           elevation: 15.0,
           icon: const Icon(Icons.error_outline_outlined,
           color: Colors.red,),
-          backgroundColor: Color.fromARGB(184, 106, 230, 157),
+          backgroundColor: const Color.fromARGB(184, 106, 230, 157),
           title: const Text('Leaf Identified'),
           content: Text(
               'Name: ${_results[0]["label"]}\nConfidence: ${(_results[0]["confidence"] * 100).toStringAsFixed(2)}\n\nTap the link below for information on control and prevention measures\n\nTap anywhere else to close this dialog'),

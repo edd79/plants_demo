@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:plants_demo/src/screens/disease_image_handler.dart';
 import 'package:plants_demo/src/screens/pest_image_handler.dart';
@@ -54,7 +53,7 @@ class HomePage extends StatelessWidget {
                     },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(
-                          Color.fromARGB(57, 56, 245, 39)),
+                          const Color.fromARGB(57, 56, 245, 39)),
                     ),
                     label: const Text("Scan Leaf"),
                     icon: const Icon(Icons.energy_savings_leaf_outlined)),
@@ -68,7 +67,7 @@ class HomePage extends StatelessWidget {
                     },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(
-                          Color.fromARGB(57, 56, 245, 39)),
+                          const Color.fromARGB(57, 56, 245, 39)),
                     ),
                     label: const Text("Scan Pest"),
                     icon: const Icon(Icons.bug_report_outlined)),

@@ -66,24 +66,24 @@ class _PlantPestsState extends State<PlantPests> {
             const Padding(padding: EdgeInsets.only(bottom: 20)),
             isImageSelected
                 ? Center(
-                  child: Container(
+                  child: SizedBox(
                       height: 300, // specify the height of the container
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: imageFile != null
                             ? Image.file(imageFile!)
-                            : Container(child: Text('No image')),
+                            : const Text('No image'),
                       ),
                     ),
                 )
                 : Center(
-                  child: Container(
+                  child: SizedBox(
                       height: 300,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: defaultImageData != null
                             ? Image.memory(defaultImageData!)
-                            : Container(child:Text('No image')),
+                            : const Text('No image'),
                       ),
                     ),
                 ),
@@ -199,7 +199,7 @@ class _PlantPestsState extends State<PlantPests> {
           icon: const Icon(
             Icons.error_outline_outlined,
             color: Colors.red,),
-          backgroundColor: Color.fromARGB(223, 106, 230, 158),
+          backgroundColor: const Color.fromARGB(223, 106, 230, 158),
           title: const Text('Pest Identified'),
           content: Text(
               'Name: ${_results[0]["label"]}\nConfidence: ${(_results[0]["confidence"] * 100).toStringAsFixed(2)}\n\nTap the link below for information on control and prevention measures\n\nTap anywhere else to close this dialog'),

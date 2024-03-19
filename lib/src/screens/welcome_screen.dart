@@ -9,51 +9,6 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
 
-    // return MaterialApp(
-    //   debugShowCheckedModeBanner: false,
-    //   home: Scaffold(
-    //     backgroundColor: Color.fromARGB(255, 176, 179, 174),
-    //     body: Container(
-    //       padding: EdgeInsets.all(20.0),
-    //       child: Column(
-    //         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    //         children: [
-    //           Image(
-    //             image: AssetImage('assets/project_pics/control4.jpeg'),
-    //             height: height * 0.6,
-    //           ),
-    //           Column(
-    //             children: [
-    //               Text(
-    //                 'PLANT DISEASE IDENTIFICATION',
-    //                 style: Theme.of(context).textTheme.headlineMedium,
-    //               ),
-    //               Text('One step closer to healthy harvests',
-    //                   style: Theme.of(context).textTheme.bodyMedium),
-    //             ],
-    //           ),
-    //           Row(
-    //             mainAxisAlignment: MainAxisAlignment.center,
-    //             children: [
-    //               ElevatedButton(
-    //                 onPressed: () {
-    //                   Navigator.push(
-    //                       context,
-    //                       MaterialPageRoute(
-    //                         builder: (context) =>
-    //                             HomePage(),
-    //                       ));
-    //                 },
-    //                 child: Text('Get Started'),
-    //               ),
-    //             ],
-    //           ),
-    //         ],
-    //       ),
-    //     ),
-    //   ),
-    // );
-
     return Scaffold(
       body: Stack(
         children: [
