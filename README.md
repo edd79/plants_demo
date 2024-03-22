@@ -1,16 +1,23 @@
-# plants_demo
+# LeafLab Pro
 
-A new Flutter project.
+## Crop Pest and Disease Detection App
 
-## Getting Started
+This project implements a mobile application for crop pest and disease identification. Users can upload images of their crops, and the app will leverage a machine learning model to identify potential threats. Additionally, the app provides users with information on treatment and prevention methods for the identified pests and diseases.
 
-This project is a starting point for a Flutter application.
+## Key Features:
 
-A few resources to get you started if this is your first Flutter project:
+Pest/Disease identification through image recognition
+Treatment and prevention information for identified threats
+User-friendly interface for easy navigation
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Tech Stack:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Flutter
+2. Tensorflow
+3. SQLite database
+
+## Getting Started:
+
+Clone this repository.
+Install required dependencies in the pubspec.yaml - 'flutter pub get'
+Run the app

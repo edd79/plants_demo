@@ -64,7 +64,7 @@ class _PlantDiseasesState extends State<PlantDiseases> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const Padding(padding: EdgeInsets.only(bottom: 20)),
+            const Padding(padding: EdgeInsets.only(bottom: 75)),
             isImageSelected
                 ? Center(
                     child: SizedBox(
