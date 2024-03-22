@@ -6,9 +6,9 @@ This project implements a mobile application for crop pest and disease identific
 
 ## Key Features:
 
-Pest/Disease identification through image recognition
-Treatment and prevention information for identified threats
-User-friendly interface for easy navigation
+- Pest/Disease identification through image recognition
+- Treatment and prevention information for identified threats
+- User-friendly interface for easy navigation
 
 Tech Stack:
 
@@ -18,6 +18,6 @@ Tech Stack:
 
 ## Getting Started:
 
-Clone this repository.
-Install required dependencies in the pubspec.yaml - 'flutter pub get'
-Run the app
+- Clone this repository.
+- Install required dependencies in the pubspec.yaml - 'flutter pub get'
+- Run the app
