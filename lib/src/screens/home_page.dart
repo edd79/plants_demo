@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:plants_demo/src/screens/disease_image_handler.dart';
 import 'package:plants_demo/src/screens/pest_image_handler.dart';
-
+import 'package:plants_demo/src/screens/specialists_screen.dart';
 class HomePage extends StatelessWidget {
   //const HomePage({super.key});
   const HomePage({Key? key}) : super(key: key);
@@ -14,9 +14,45 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(88, 22, 185, 7),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.people),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const Specialists(),
+                ),
+              );
+            },
+            focusColor: Colors.white,
+          ),
+        ],
       ),
       body: Stack(
         children: [
+          // Positioned(
+          //   top: 10,
+          //   right: 10,
+          //   width: 200,
+          //   height: 50,
+          //   child: ElevatedButton.icon(
+          //     onPressed: () {
+          //       Navigator.push(
+          //         context,
+          //         MaterialPageRoute(
+          //           builder: (context) => const Specialists(),
+          //         ),
+          //       );
+          //     },
+          //     style: ButtonStyle(
+          //       backgroundColor: MaterialStateProperty.all<Color>(
+          //           const Color.fromARGB(57, 56, 245, 39)),
+          //     ),
+          //     label: const Text('Contact a Specialist'),
+          //     icon: const Icon(Icons.person),
+          //   ),
+          // ),
           Container(
             decoration: const BoxDecoration(
                 image: DecorationImage(
