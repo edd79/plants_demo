@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:plants_demo/src/screens/disease_image_handler.dart';
 import 'package:plants_demo/src/screens/pest_image_handler.dart';
-
+import 'package:plants_demo/src/screens/specialists_screen.dart';
 class HomePage extends StatelessWidget {
   //const HomePage({super.key});
   const HomePage({Key? key}) : super(key: key);
@@ -14,6 +14,20 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(88, 22, 185, 7),
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.people),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const Specialists(),
+                ),
+              );
+            },
+            focusColor: Colors.white,
+          ),
+        ],
       ),
       body: Stack(
         children: [
@@ -55,7 +69,7 @@ class HomePage extends StatelessWidget {
                       backgroundColor: MaterialStateProperty.all<Color>(
                           const Color.fromARGB(57, 56, 245, 39)),
                     ),
-                    label: const Text("Scan Leaf"),
+                    label: const Text("Upload Leaf"),
                     icon: const Icon(Icons.energy_savings_leaf_outlined)),
                 ElevatedButton.icon(
                     onPressed: () {
@@ -69,7 +83,7 @@ class HomePage extends StatelessWidget {
                       backgroundColor: MaterialStateProperty.all<Color>(
                           const Color.fromARGB(57, 56, 245, 39)),
                     ),
-                    label: const Text("Scan Pest"),
+                    label: const Text("Upload Pest"),
                     icon: const Icon(Icons.bug_report_outlined)),
               ],
             ), 
@@ -91,16 +105,13 @@ class Slideshow extends StatefulWidget {
 class _SlideshowState extends State<Slideshow> {
   final List<String> slides = [
     'assets/project_pics/home.jpg',
+    'assets/project_pics/welcomeimage.png',
+    'assets/project_pics/mission.png',
+    'assets/project_pics/tutorial.png',
+    'assets/project_pics/specialist.png',
     'assets/project_pics/control17.jpg',
-    'assets/project_pics/control13.jpg',
-    'assets/project_pics/control12.jpg',
-    'assets/project_pics/control8.jpg',
     'assets/project_pics/control11.jpg',
-    'assets/project_pics/control19.jpg',
-    'assets/project_pics/control18.jpg',
-    'assets/project_pics/control20.jpg',
-    'assets/project_pics/control10.jpg',
-    'assets/project_pics/control9.jpg',
+    'assets/project_pics/control12 - Copy.jpg',
   ];
 
   late PageController _pageController;
